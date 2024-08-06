@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useUserAuth } from "./_utils/auth-context";
-import Link from "next/link";
-import { dbGetAllPosts } from "./_services/blog-service";
 
 export default function SignInPage() {
   const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
@@ -24,13 +22,6 @@ export default function SignInPage() {
     }
   }
 
-  const [blogPostList, setBlogPostList] = useState([]);
-  useEffect( () => {
-	if(user){
-		dbGetAllPosts(user.uid, setBlogPostList);
-	}
-  }, [user] );
-
   return (
     <main>
       <header>
@@ -42,21 +33,7 @@ export default function SignInPage() {
           <p>Welcome {user.displayName}</p>
           <p>{user.email}</p>
           <img className="w-8 h-8" src={user.photoURL} />
-          <p>
-            <Link href="/logIn/add-blog-post/">Add a new Blog Post</Link>
-          </p>
           <button onClick={handleSignOut} className="text-lg m-2 hover:underline">Sign Out</button>
-		  <section>
-			<h2>My Blog Posts</h2>
-			<ul>
-				{
-					blogPostList.map( (post) => {
-						let postUrl = `/logIn/${post.id}`;
-						return <li key={post.id}><Link href={postUrl}>{post.title}</Link></li>
-					} )
-				}
-			</ul>
-		  </section>
         </div>
       ) : (
         // user IS NOT logged in
