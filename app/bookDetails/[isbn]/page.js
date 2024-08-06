@@ -1,62 +1,51 @@
-'use client';
+"use client"
+import Link from 'next/link';
+import BookDetails from './bookItem';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import BookInfo from './bookInfo';
-import { useParams } from 'next/navigation';
 
-function BookDetails({}) {
-  const { isbn } = useParams();
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    if (!isbn) {
-      setError('No ISBN provided');
-      setLoading(false);
-      return;
-    }
 
-    fetch(`https://api.itbook.store/1.0/books/${isbn}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP status ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(data => {
-        setCategories([data]); // 确保是一个数组
-        setLoading(false);
-      })
-      .catch(err => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, [isbn]);
+export default function homepage(){
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+    return(
+        <div className='h-screen'>
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+            <header className="bg-white shadow-md">
 
-  return (
-    <div className="mx-auto p-4">
-      {categories.map((book, index) => (
-        <BookInfo
-          key={index}
-          src={book.image}
-          title={book.title}
-          subtitle={book.subtitle}
-          isbn={book.isbn13}
-          price={book.price}
-          desc={book.desc}
-        />
-      ))}
-    </div>
-  );
+                            
+            <div className="container mx-auto flex items-center justify-between py-4 px-6">
+
+            <Link href={'./homepage/'}>
+                <div className="flex flex-col items-center justify-center">
+                    <img src="/logo.jpg" alt="Description of the image" className=" mr-2 h-10" />
+                    <h1 className='text-xl font-bold text-black'>BOOKIE</h1>
+                </div>
+                </Link>
+            <div className='flex items-center space-x-4'>
+                <button className='flex items-center'>
+                <Link href={"./bookFilter/"}>
+                        <div className='flex items-center space-x-1'>
+                            <img src ='/search.jpg' alt = 'search' className="h-6 w-6"/>
+                            <span className=" text-black">SEARCH</span>
+                        </div>
+                </Link>
+                </button>
+                
+
+                <button className="bg-green-300 text-white px-4 py-2 rounded"> 
+                    <Link href={"./logIn/"}>LOG IN </Link>
+                </button>
+
+                </div>
+
+            </div>
+
+            </header>
+        <main>
+            <BookDetails/>
+        </main>
+        </div>
+    )
 }
-
-export default BookDetails;

@@ -24,7 +24,7 @@ export default function homepage(){
                     
                 <div className='flex items-center space-x-4'>
                     <button className='flex items-center'>
-                       <Link href={"./searchPage/"}>
+                       <Link href={"./bookFilter/"}>
                         <div className='flex items-center space-x-1'>
                             <img src ='/search.jpg' alt = 'search' className="h-6 w-6"/>
                             <span className=" text-black">SEARCH</span>

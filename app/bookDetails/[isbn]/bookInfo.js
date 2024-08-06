@@ -6,7 +6,7 @@ export default function BookInfo({ src, title, subtitle, isbn, price, desc }) {
       <h1 className="text-2xl font-bold">{title}</h1>
       <img src={src} alt={title} className="w-full h-64 object-contain" />
       <h2 className="text-sm text-gray-600">Subtitle: {subtitle}</h2>
-      <p className="text-sm text-gray-600">{desc}</p>
+      <p className="text-sm text-gray-600">Description: {desc}</p>
       <p className="text-lg font-bold">ISBN: {isbn}</p>
       <p className="text-lg font-bold">{price}</p>
     </div>
