@@ -22,18 +22,14 @@ export default function BookFilter(){
                     </Link>
                 <div className='flex items-center space-x-4'>
                     <button className='flex items-center'>
-                       <Link href={"./searchPage/"}>
+                       <Link href={"./bookFilter/"}>
                             <div className='flex items-center space-x-1'>
                                 <img src ='/search.jpg' alt = 'search' className="h-6 w-6"/>
                                 <span className=" text-black">SEARCH</span>
                             </div>
                        </Link>
                     </button>
-                    <div>
-                        <Link href={"./shoppingCart/"}>
-                            <img src='/logo.jpg' alt-="my book" className ="h-8 w-8 "/>
-                        </Link>
-                    </div>
+                    
                 
                     <button className="bg-green-300 text-white px-4 py-2 rounded"> 
                         <Link href={"./logIn/"}>LOG IN </Link>
