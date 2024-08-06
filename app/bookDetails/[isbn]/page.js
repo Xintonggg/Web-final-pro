@@ -2,15 +2,15 @@
 
 import React, { useState, useEffect } from 'react';
 import BookInfo from './bookInfo';
+import { useParams } from 'next/navigation';
 
-function BookDetails({ isbn }) {
+function BookDetails({}) {
+  const { isbn } = useParams();
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-   
-
     if (!isbn) {
       setError('No ISBN provided');
       setLoading(false);
@@ -43,7 +43,7 @@ function BookDetails({ isbn }) {
   }
 
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="mx-auto p-4">
       {categories.map((book, index) => (
         <BookInfo
           key={index}
