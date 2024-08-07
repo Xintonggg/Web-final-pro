@@ -25,7 +25,7 @@ function BookDetails({}) {
         return response.json();
       })
       .then(data => {
-        setCategories([data]); // 确保是一个数组
+        setCategories([data]); 
         setLoading(false);
       })
       .catch(err => {
@@ -43,6 +43,7 @@ function BookDetails({}) {
   }
 
   return (
+    
     <div className="mx-auto p-4">
       {categories.map((book, index) => (
         <BookInfo
