@@ -2,9 +2,10 @@ import Link from 'next/link';
 import React from 'react';
 
 export default function CategoryItem({ src, title, subtitle, isbn, price, url }) {
+    const bookDetailsUrl = `/bookDetails/${isbn}`;
     return (
         <div className="bg-white shadow-md  border-2 border-transparent hover:border-green-400">
-            <Link href={url}>
+            <Link href={bookDetailsUrl}>
                 <div>
                     <img src={src} alt={title} className="w-full h-auto object-cover " />
                     <h1 className="text-lg font-bold">{title}</h1>
